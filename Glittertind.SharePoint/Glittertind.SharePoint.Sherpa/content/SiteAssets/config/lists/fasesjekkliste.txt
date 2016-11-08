@@ -1,0 +1,15 @@
+﻿{
+    "Name": "Fasesjekkliste",
+    "OnQuickLaunch": false,
+    "VersioningEnabled":  true,
+    "Description": "",
+    "Views": [
+	    {
+	        "Name": "Alle elementer",
+	        "ViewFields": ["LinkTitle", "GtProjectPhase", "GtChecklistStatus", "GtComment"],
+	        "RowLimit": 50,
+            "Paged":true,
+	        "Query": "<OrderBy><FieldRef Name='GtProjectPhase' /></OrderBy>"
+	    }
+    ]
+}

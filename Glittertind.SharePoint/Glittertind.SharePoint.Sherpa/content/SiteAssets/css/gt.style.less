@@ -1,0 +1,690 @@
+﻿.validationMessage {
+	color: red;
+}
+
+.newProjectPage {
+	h1 {
+		margin-left: 10px;
+		display: none;
+	}
+	.validationMessage {
+		color: red;
+		margin-bottom: 10px;
+	}
+	.projectInputForm {
+		width: 263px;
+		margin-left: 20px;
+
+		label {
+			display: inline-table;
+			width: 260px;
+			margin: 0;
+			word-break: break-all;
+		}
+
+		input, textarea {
+			width: 250px; 
+			margin: 3px 0 10px;
+		}
+
+		button {
+			float: right;
+			margin: 0;
+		}
+
+		textarea#projectDescriptionInput {
+			height: 70px;
+			overflow: auto;
+		}
+	}
+}
+.projectFrontPage {
+	width: 100%;
+
+	> tbody > tr > td:first-child {
+		min-width: 640px;
+	}
+	.rightColumnStatic {
+		display: none;
+	}
+	.missingMetadataWarning {
+		display: none;
+		color: red;
+		margin: 10px 0;
+	}
+
+	.projectMetadata {
+		width: 300px;
+		margin-bottom: 20px;
+
+		table {
+			width: 100%;
+			margin-bottom: 10px;
+
+			td {
+				padding: 3px;
+			}
+
+			tr td:first-child {
+				width: 120px;
+			}
+		}
+		a#editPageMetaLink, a#editPageMetaLink:visited, a#editPageMetaLink:active {
+			color: #666;
+			font-size: .9em;
+			text-decoration: none;
+		}
+	}
+}
+
+ul.gt-List {
+	list-style-type: none;
+	padding-left: 0;
+    margin: 0;
+
+	.gt-projectItem {
+		display: block;
+		margin-bottom: 20px;
+
+		.gt-phaseIcon {
+			margin-right: 20px;
+		}
+		&.new {
+			margin-bottom: 10px;
+		}
+	}
+}
+#gtcopylistelements {
+	.gtelementform {
+		max-width: 800px;
+
+        .gtbuttons {
+            float: right;
+            margin: 20px 0 20px 0;
+        }
+		table.gtelements {
+			border: none;
+            width: 100%;
+
+			tr {
+				th {
+					font-weight: 500;
+
+				}
+				th, td {
+					max-width: 450px;
+					line-height: 2em;
+					font-size: 1em;
+					text-align: left;
+					vertical-align: top;
+					padding: 5px;
+				}
+				td.ms-ChoiceField{
+					.ms-ChoiceField-field {
+						margin-top: 0;
+                        width: 100%;
+					}
+					&.title-field {
+						.ms-Label {
+							padding: 0;
+						}
+						.ms-ChoiceField-field:after {
+							display: none;
+						}
+					}
+					&.check-field {
+						.ms-ChoiceField-field:after {
+							border-radius: 0;
+							left: 5px;
+							top: 5px;
+						}
+						.ms-ChoiceField-input[type=checkbox]:checked+.ms-ChoiceField-field:before {
+							top: 9px;
+							left: 9px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.gt-list-control {
+	.clear-search {
+		cursor: pointer;
+	}
+
+	.clear-search:hover {
+		text-decoration: underline;
+	}
+
+	ul#Paging {
+		display: block;
+		list-style-type: none;
+		margin: 5px 0 5px 0;
+		padding: 0;
+
+		li {
+			display: inline-block;
+			margin-right: 10px;
+		}
+	}
+}
+
+.loadingSpinner {
+	vertical-align: top;
+	margin: 15px;
+}
+
+.gt-result-table {
+	width: 99%;
+	margin-right: 1%;
+	border-collapse: collapse;
+	padding: 4px;
+	text-align: left;
+
+	tr th {
+		font-weight: normal;
+		font-size: 0.95em;
+		color: rgb(119, 119, 119);
+		text-align: left;
+		text-decoration: none;
+		vertical-align: middle;
+		white-space: nowrap;
+		padding: 5px 4px;
+	}
+
+	td, th {
+		padding: 4px; 
+		text-align: left;
+	}
+
+	td.restrict-width {
+		max-width: 100px;
+	}
+
+	.status-red {
+		background-color: rgb(204, 102, 102);
+		background-color: rgba(255, 75, 77, 0.4);
+	}
+
+	.status-yellow {
+		background-color: rgb(240, 230, 140);
+		background-color: rgba(240,230,140, 0.8);
+	}
+
+	.status-green {
+		background-color: rgb(153,204,102);
+		background-color: rgba(0, 150, 0, 0.4);
+	}
+}
+
+.gt-phaseIcon {
+	display: block;
+	width: 92px;
+	height: 62px;
+	float: left;
+
+	.phaseLetter {
+		display: block;
+		font-size: 33px;
+		text-align: center;
+	}
+	.projectPhase {
+		display: block;
+		font-size: 12px;
+		text-transform: uppercase;
+		text-align: center;
+	}
+}
+
+.designmode .projectFrontPage .projectPhaseSection {
+	display: none;
+}
+
+.projectFrontPage .projectPhaseSection {
+	width: 100%;
+
+	.projectPhaseHeading {
+		display: block;
+		width: 100%;
+		float: left;
+	}
+
+	h2.gt-phaseHeading {
+		width: 137px;
+		float: left;
+		margin: 0 10px 10px 0;
+		text-overflow: initial;
+	}
+
+	a#changeProjectPhaseLink {
+		float: left;
+		display: none;
+		border: 1px solid #ccc;
+		text-transform: none;
+		text-decoration: none;
+		padding: 5px;
+	}
+
+	ul.projectPhases {
+		padding: 0 20px 30px 0;
+		margin: 0;
+		display: flex;
+		list-style-type: square;
+		overflow: visible;
+		clear: both;
+		width: 98%;
+
+		&.legacy-ie {
+			display: block;
+
+			li {
+				display: inline-block;
+				vertical-align: top;		
+			}
+		}
+		> li {
+			@gtGreen: rgb(51, 153, 51);
+			@gtBlue: rgb(0, 114, 198);
+			@gtGreenInverted: #fff;
+			@gtBlueInverted: #fff;
+
+			width: auto;
+			-ms-flex: 1;
+			-webkit-flex: 1;
+			-moz-flex: 1;
+			flex: 1;
+			display: block;
+			position: relative;
+			margin: 0;
+			text-decoration: none;
+
+			.phaseLetterHover() {
+				&:hover {
+					.phaseLetter {
+						border: 1px solid #666;
+						background-color: #333;
+						color: #fff;
+					}
+				}
+			}
+
+			> a,
+			> a:visited {
+				position: relative;
+				width: 100%;
+				text-decoration: none;
+				color: #333;
+				overflow: hidden;
+				display: block;
+			}
+
+			.gt-phaseIcon {
+				position: relative;
+				width: 100%;
+				height: auto;
+				float: none;
+			}
+
+			.projectPhase {
+				width: 90%;
+				text-align: left;
+				font-size: 1rem;
+				font-size: 0.9vw;
+				margin-top: 3px;
+				margin-bottom: 5px;
+				color: @gtGreen;
+			}
+			.phaseSubText {
+				width: 90%;
+				font-size: 0.7rem;
+				font-size: 0.7vw;
+				text-transform: none;
+				text-align: left;
+				display: block;
+				color: #333;
+			}
+
+			.phaseLetter {
+				border-radius: 1000px;
+				position: relative;
+				width: 40px;
+				height: 40px;
+				background-color: #fff;
+				display: block;
+				margin: 10px 10px 0 0;
+				text-align: center;
+				z-index: 100;
+				line-height: 38px;
+				font-size: 1.4rem;
+				vertical-align: middle;
+				border: 1px solid @gtGreen;
+				color: @gtGreen;
+			}
+
+			.checklistStats {
+				opacity:0;
+				transition: opacity .0s ease-in-out;
+				-moz-transition: opacity .0s ease-in-out;
+				-webkit-transition: opacity .0s ease-in-out;
+				position:absolute;
+
+				h3 {
+					color:#eee;
+					padding-bottom:5px;
+				}
+				ul {
+					padding: 0;
+					margin: 0;
+					list-style:none;
+
+					li {
+						display: block;
+						margin: 0;
+						padding: 0;
+						margin-top: 5px;
+						list-style-type: none;
+						list-style:none;
+
+                        &.spacer {
+                            height: 10px;
+                        }
+						a {
+							color: #eee;
+							text-decoration: none;
+						}
+					}
+				}
+			}
+
+			&:before,
+			&:after {
+				display: block;
+				position: absolute;
+				top: 36px;
+				width: 100%;
+				margin-left: 1%;
+				height: 1px;
+				content: '';
+				background-color: @gtBlue;
+				z-index: 2;
+			}
+
+			&:before {
+				left: 0;
+			}
+
+			:after {
+				right: 0;
+			}
+
+			.gt-phaseIcon:before,
+			.gt-phaseIcon:after {
+				display: block;
+				position: absolute;
+				top: 18px;
+				width: 100%;
+    			margin-left: 1%;
+				height: 1px;
+				content: '';
+				background-color: @gtGreen;
+				z-index: 2;
+			}
+
+			.gt-phaseIcon:before {
+				left: 0;
+			}
+
+			.gt-phaseIcon:after {
+				right: 0;
+			}
+
+			.phaseLetterHover();
+
+			&.selected {
+				&:before,
+				&:after {
+					height: 2px;
+				}
+				.projectPhase {
+					font-weight: 600;
+				}
+
+				.gt-phaseIcon:before,
+				.gt-phaseIcon:after {
+					height: 2px;
+				}
+				.phaseLetter {
+					border: 1px solid @gtGreen;
+					background-color: @gtGreen;
+					color: @gtGreenInverted
+				}
+
+				.phaseLetterHover();
+			}
+
+			&.last-phase,
+			&:first-child {
+				.projectPhase {
+					color: @gtBlue;
+				}
+				.gt-phaseIcon {
+					&:before,
+					&:after {
+						background-color: none;
+						height: 0;
+					}
+				}
+				.phaseLetter {
+					color: @gtBlue;
+					border: 1px solid @gtBlue;
+				}
+				&.selected {
+					.phaseLetter {
+						background-color: @gtBlue;
+						color: @gtBlueInverted;
+					}
+				}
+				.phaseLetterHover();
+			}
+			&:hover {
+				.checklistStats {
+					display: block;
+					position:absolute;
+					top:64px;
+                    left: -6px;
+					z-index:15;
+					background: rgba(50,50,50,.95);
+					padding:15px;
+					border:0px solid #ccc;
+					box-shadow: 3px 8px 15px #999;
+					color: #eee;
+					min-width:240px;
+					border-radius:2px;
+					overflow:visible;
+					opacity:1;
+					transition: opacity .2s ease-in-out;
+					-moz-transition: opacity .2s ease-in-out;
+					-webkit-transition: opacity .2s ease-in-out;
+					transition-delay: .1s;
+
+					&:before {
+						bottom: 100%;
+						left: 10%;
+						border: solid transparent;
+						content: " ";
+						height: 0;
+						width: 0;
+						position: absolute;
+						pointer-events: none;
+						z-index:200;
+					}
+					&:after {
+						bottom: 100%;
+						left: 10%;
+						border: solid transparent;
+						content: " ";
+						height: 0;
+						width: 0;
+						position: absolute;
+						pointer-events: none;
+						z-index:200;
+						border-color: rgba(51, 51, 51,0);
+						border-bottom-color:rgba(51, 51, 51,.95);
+						border-width: 12px;
+						margin-left: -12px;
+					}
+				}
+			}
+			@media (max-width: 1400px) {
+				.projectPhase {
+					font-size: 12.6px;
+				}
+				.phaseSubText {
+					font-size: 9.8px;
+				}
+			} 
+			@media (min-width: 1680px) {
+				.projectPhase {
+					font-size: 16.8px;
+				}
+				.phaseSubText {
+					font-size: 13.5px;
+				}
+			}
+		}
+	}
+}
+
+#gtloglist {
+	max-width: 700px;
+
+	h2 {
+		margin-bottom: 10px;
+	}
+
+	table tr th {
+		font-weight: normal;
+		font-size: 0.85em;
+		color: rgb(119, 119, 119);
+		text-align: left;
+		text-decoration: none;
+		vertical-align: middle;
+		white-space: nowrap;
+		padding: 0 5px;
+	}
+
+	table tr td {
+		padding: 5px;
+
+        .gt-logelement-link {
+            cursor: pointer;
+            color: #444444;
+            
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+	}
+}
+
+#gtchecklist {
+	width: 514px;
+
+	ul {
+		padding-left: 10px;
+        
+	    li {
+		    list-style: none;
+		    margin-bottom: 10px;
+
+		    .gt-checklist-link {
+			    line-height: 20px;
+			    display: block;
+
+			    .gt-checklist-title {
+				    display: inline-block;
+				    width: 90%;
+				    vertical-align: top;
+                    color: #444444;
+                    cursor: pointer;
+			    }
+                
+                &:hover {
+                    text-decoration: underline;
+                }
+		    }
+	    }
+	}
+}
+
+.gt-reload-msg {
+    cursor: pointer;
+    margin-top: 10px;
+    color: #444444;
+
+    span.gt-reload-icon {
+        display: inline-block;
+        background: url(/_layouts/15/images/spcommon.png?rev=23) -38px -218px;
+        height: 15px;
+        width: 15px;
+        margin-right: 5px;
+    }
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+.gt-icon {
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	margin-right: 7px;
+	border-radius: 15px;
+	vertical-align: top;
+
+
+	&:after {
+		font-size: 13px;
+		padding-left: auto;
+		margin-left: 5px;
+		margin-right: auto;
+		margin-top: 1px;
+		display: inline-block;
+		color: white;
+	}
+
+	&.gt-completed {
+		background-color: #393;
+		&:after {
+			content: "\2713 ";
+		}
+	}
+
+	&.gt-ignored {
+		background-color: #ff8000;
+
+		&:after {
+			content: "\2713 ";
+		}
+	}
+
+	&.gt-failed {
+		background-color: red;
+
+		&:after {
+			content: "\2717";
+			margin-top: 0;
+		}
+	}
+
+	&.gt-nostatus {
+		background-color: gray;
+
+		&:after {
+			content: "?";
+			font-weight: bold;
+    		margin: 0 0 0 7px;
+		}
+	}
+}

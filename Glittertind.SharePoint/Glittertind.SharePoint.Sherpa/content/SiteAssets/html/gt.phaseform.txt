@@ -1,0 +1,41 @@
+﻿<script type="text/javascript" src="../../../SiteAssets/gt/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../../../SiteAssets/gt/js/gt.generics.js?rev=20160826"></script>
+<script type="text/javascript" src="../../../SiteAssets/gt/js/gt.project.js?rev=20160826"></script>
+<link rel="stylesheet" type="text/css" href="../../../SiteAssets/gt/css/gt.style.css?rev=20160826">
+
+<script type="text/javascript" lang="javascript">
+    (function () {
+        GT.jQuery(document).ready(function () {
+            var currentId = getParameterByName('ID');
+            var editMode = getParameterByName('EditMode');
+            if (editMode != '' && editMode != undefined) {
+                if (editMode == "Project") {
+                    // Jesus chist :D Hiding the "Open this web part page"-text
+                    GT.jQuery('#onetIDListForm .ms-webpart-chrome.ms-webpart-chrome-vertical.ms-webpart-chrome-fullWidth > div > table > tbody > tr > td> table:nth-child(2)').hide();
+                    //Hide content type picker and name and title field (as it's applicable for the page, not the web
+                    GT.jQuery('#onetIDListForm input[id^="FileLeafRef"]').closest('tr').hide();
+                    GT.jQuery('#onetIDListForm select[title="Innholdstype"]').closest('tr').hide();
+                    GT.jQuery('#onetIDListForm input[title="Tittel"]').closest('tr').hide();
+                }
+                else if (editMode == "PhaseOnly") {
+                    // Jesus chist :D Hiding the "Open this web part page"-text
+                    GT.jQuery('#onetIDListForm .ms-webpart-chrome.ms-webpart-chrome-vertical.ms-webpart-chrome-fullWidth > div > table > tbody > tr > td> table:nth-child(2)').hide();
+                    // Hide all rows but the phase picker
+                    GT.jQuery('#onetIDListForm table.ms-formtable > tbody > tr').hide();
+                    GT.jQuery('#onetIDListForm table.ms-formtoolbar td.ms-toolbar:nth-of-type(1)').hide();
+                    GT.jQuery('#onetIDListForm div[id^="GtProjectPhase"]').closest('tr').show();
+                    GT.Project.PhaseForm.CheckList.render();
+                }
+				else if (editMode == "ProjectInfo") {
+					GT.jQuery('.ms-cui-tabContainer').hide();
+                    GT.jQuery('#onetIDListForm table.ms-formtable tr td.ms-formlabel span a[name="SPBookmark_FileLeafRef"]').closest('tr').hide();
+                    GT.jQuery('#onetIDListForm table.ms-formtable tr td.ms-formlabel span a[name="SPBookmark_Title"]').closest('tr').hide();
+					if (currentId) {
+						GT.jQuery('.ms-formtable').before('<a class="gt-edit-link" href="EditForm.aspx?EditMode=Project&ID=' + currentId + '">Rediger prosjektegenskapene under.</a>');
+						GT.jQuery('.ms-formtable').after('<a class="gt-edit-link" href="EditForm.aspx?EditMode=Project&ID=' + currentId + '">Rediger prosjektegenskapene over.</a>');
+					}
+                }
+            }
+        });
+    })();
+</script>

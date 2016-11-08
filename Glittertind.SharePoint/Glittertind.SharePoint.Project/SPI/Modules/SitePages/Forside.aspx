@@ -27,12 +27,12 @@
 	    var navBarHelpOverrideKey = "WSSEndUser";
 	</sharepoint:scriptblock>
     <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/jquery-1.11.1.min.js" runat="server" Language="javascript" ></SharePoint:ScriptLink>
-    <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/gt.common.js?rev=20140825" runat="server" Language="javascript" ></SharePoint:ScriptLink>
-    <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/gt.generics.js?rev=20140825" runat="server" Language="javascript" ></SharePoint:ScriptLink>
-    <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/gt.project.js?rev=20140911" runat="server" Language="javascript" ></SharePoint:ScriptLink>
-    <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/gt.project.setup.js?rev=20140825" runat="server" Language="javascript" ></SharePoint:ScriptLink>
-    <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/gt.project.setup.contenttypes.js?rev=20140825" runat="server" Language="javascript" ></SharePoint:ScriptLink>
-    <SharePoint:CssRegistration Name="&lt;% $SPUrl:~sitecollection/SiteAssets/gt/css/gt.style.css?rev=20140911 %&gt;" runat="server" ></SharePoint:CssRegistration>
+    <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/gt.common.js?rev=20160826" runat="server" Language="javascript" ></SharePoint:ScriptLink>
+    <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/gt.generics.js?rev=20160826" runat="server" Language="javascript" ></SharePoint:ScriptLink>
+    <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/gt.project.js?rev=20160826" runat="server" Language="javascript" ></SharePoint:ScriptLink>
+    <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/gt.project.setup.js?rev=20160826" runat="server" Language="javascript" ></SharePoint:ScriptLink>
+    <SharePoint:ScriptLink Name="~sitecollection/SiteAssets/gt/js/gt.project.setup.contenttypes.js?rev=20160826" runat="server" Language="javascript" ></SharePoint:ScriptLink>
+    <SharePoint:CssRegistration Name="&lt;% $SPUrl:~sitecollection/SiteAssets/gt/css/gt.style.css?rev=20160826 %&gt;" runat="server" ></SharePoint:CssRegistration>
 </asp:Content>
 <asp:Content ContentPlaceHolderID="PlaceHolderSearchArea" runat="server">
 	<SharePoint:DelegateControl runat="server" ControlId="SmallSearchInputBox" />
@@ -71,7 +71,7 @@
 			        <h2 style="text-align:justify;" class="ms-webpart-titleText"><nobr><span>Om prosjektet</span><span id="WebPartCaptionWPQ2"></span></nobr></h2>
                     <div class="projectMetadata">
                         <table>
-                            <tr class="ms-HoverBackground-bgColor">
+                            <tr class="ms-HoverBackground-bgColor GtProjectNumber">
                                 <td>
                                     <SharePoint:FieldLabel runat="server" FieldName="GtProjectNumber" />
                                 </td>
@@ -182,33 +182,15 @@
     </table>
 	<SharePoint:ScriptBlock runat="server">if(typeof(MSOLayout_MakeInvisibleIfEmpty) == "function") {MSOLayout_MakeInvisibleIfEmpty();}</SharePoint:ScriptBlock>
     <script type="text/javascript" language="javascript">
-        GT.jQuery(document).ready(function() {
-            GT.Project.PopulateProjectPhasePart();
+        GT.jQuery(document).ready(function () {
+            GT.Project.InitFrontpage();
         });
     </script>
     <SharePoint:SPSecurityTrimmedControl runat="server" AuthenticationRestrictions="AuthenticatedUsersOnly" Permissions="AddAndCustomizePages" PermissionContext="CurrentItem">
         <script type="text/javascript">
             GT.jQuery(document).ready(function () {
-                var editMetaUrl = 'Forms/EditForm.aspx?EditMode=Project&ID=' + _spPageContextInfo.pageItemId;
-                GT.jQuery('#editPageMetaLink').attr('href', editMetaUrl);
-
-                var editPhaseUrl = editMetaUrl.replace('Project', 'PhaseOnly');
-                GT.jQuery('#changeProjectPhaseLink').attr('href', editPhaseUrl);
-                HandleMissingMetadata();
-
-                GT.Project.ShowMetadataIfIsWelcomePage('.projectFrontPage .rightColumnStatic');
+                GT.Project.InitOwnerControls();
             });
-
-            function HandleMissingMetadata() {
-                if (GT.jQuery('.projectFrontPage .projectMetadata table tr.GtProjectPhase td.fieldValue').text().trim() == '' ||
-                    GT.jQuery('.projectFrontPage .projectMetadata table tr.GtProjectManager td.fieldValue').text().trim() == '' ||
-                    GT.jQuery('.projectFrontPage .projectMetadata table tr.GtProjectGoals td.fieldValue').text().trim() == '') {
-                    GT.jQuery('.projectFrontPage .missingMetadataWarning').show();
-                    GT.jQuery('#changeProjectPhaseLink').hide();
-                } else {
-                    GT.jQuery('#changeProjectPhaseLink').show();
-                }
-            }
         </script>
     </SharePoint:SPSecurityTrimmedControl>
 </asp:Content>

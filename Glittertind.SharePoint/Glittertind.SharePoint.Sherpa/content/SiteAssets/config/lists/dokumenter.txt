@@ -1,0 +1,31 @@
+﻿{
+    "Name": "Dokumenter",
+    "OnQuickLaunch": false,
+    "VersioningEnabled":  true,
+    "Description": "",
+    "Views": [
+	    {
+	    	"Name": "Alle dokumenter",
+	        "ViewFields": ["DocIcon", "LinkFilename", "GtProjectPhase", "Modified", "Editor"],
+	        "RowLimit": 0,
+            "Paged":true,
+	        "Query": ""
+	    },	    
+        {
+	    	"Name": "",
+	    	"Url": "SitePages/Forside.aspx",
+	        "ViewFields": ["DocIcon", "LinkFilename", "Modified", "Editor"],
+	        "RowLimit": 10,
+            "Paged":true,
+	        "Query": "<OrderBy><FieldRef Name='Created' Ascending='FALSE' /></OrderBy>"
+	    },
+        {
+	    	"Name": "",
+	    	"Url": "SitePages/Ufiltrert.aspx",
+	        "ViewFields": ["DocIcon", "LinkFilename", "Modified", "Editor"],
+	        "RowLimit": 100,
+            "Paged":true,
+	        "Query": "<OrderBy><FieldRef Name='Created' Ascending='FALSE' /></OrderBy><GroupBy Collapse='TRUE'><FieldRef Name='GtProjectPhase' /></GroupBy>"
+	    }
+    ]
+}
