@@ -1,0 +1,58 @@
+﻿{
+    "DaysToShowNewIndicator": 7,
+    "DataSources": {
+        "Lists": [
+            {
+                "ListType": "TaskList",
+                "SrcList": "Standardoppgaver",
+                "DstList": "Oppgaver",
+                "SrcWeb": "{sitecollectionrelative}",
+                "Fields": [
+                    "ID",
+                    "Title",
+                    "GtProjectPhase",
+                    "ParentIDId",
+                    "Order"
+                ]
+            },
+            {
+                "ListType": "GenericList",
+                "SrcList": "Fasesjekkliste",
+                "DstList": "Fasesjekkliste",
+                "SrcWeb": "{sitecollectionrelative}",
+                "Fields": [
+                    "ID",
+                    "Title",
+                    "GtProjectPhase"
+                ]
+            },
+            {
+                "ListType": "GenericList",
+                "SrcList": "Interessentregister",
+                "DstList": "Interessentregister",
+                "SrcWeb": "{sitecollectionrelative}",
+                "Fields": [
+                    "ID",
+                    "Title",
+                    "GtStakeholderGroup",
+                    "GtStakeholderContext",
+                    "GtStakeholderStrategy",
+                    "GtStakeholderInterest",
+                    "GtStakeholderInfluence",
+                    "GtStakeholderInfluencePossibilty"
+                ]
+            },
+            {
+                "ListType": "DocumentLibrary",
+                "SrcList": "Standarddokumenter",
+                "DstList": "Dokumenter",
+                "SrcWeb": "{sitecollectionrelative}",
+                "Fields": [
+                    "ID",
+                    "Title",
+                    "GtProjectPhase"
+                ]
+            }
+        ]
+    }
+}
