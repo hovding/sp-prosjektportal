@@ -193,5 +193,14 @@
         "ID": "0x010200a2b2ac17a2244b8590398a9d1e7e3e3701",
         "InternalName": "GtProjectEvent",
         "RequiredFields": []
+    },
+    {
+        "Description": "",
+        "DisplayName": "Arbeidspakke base",
+        "Fields": [],
+        "Group": "Prosjektportalen innholdstyper",
+        "ID": "0x010088578e7470cc4aa68d5663464831070266",
+        "InternalName": "GtWorkPackageBase",
+        "RequiredFields": []
     }
 ]

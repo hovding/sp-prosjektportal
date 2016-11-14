@@ -72,7 +72,7 @@ GT.Project.Setup.CreateSiteSettingsCustomActions = function () {
             newCustomAction.set_name('GT.SiteSettings.CopyTasks');
             newCustomAction.set_title('Hent oppgaver fra porteføljeområdet');
             newCustomAction.set_description('Velg oppgaver fra porteføljeområdet og kopier oppgavene til prosjektet.');
-            
+
             var siteColRelativeUrl = _spPageContextInfo.siteServerRelativeUrl === '/' ? '' : _spPageContextInfo.siteServerRelativeUrl;
             var customActionJavaScript = String.format('{0}/SitePages/KopierElementer.aspx?srclist={1}&dstlist={2}&dstweb={3}&Origin=SiteSettings', siteColRelativeUrl, 'Standardoppgaver', 'Oppgaver', encodeURIComponent(_spPageContextInfo.webServerRelativeUrl));;
 
@@ -83,7 +83,7 @@ GT.Project.Setup.CreateSiteSettingsCustomActions = function () {
             clientContext.executeQueryAsync(Function.createDelegate(this, function () {
                 console.log('Configured custom actions for site');
                 deferred.resolve();
-            }), Function.createDelegate(this, function() {
+            }), Function.createDelegate(this, function () {
                 console.log('Error adding custom actions');
                 console.log(arguments);
                 deferred.resolve();
@@ -91,7 +91,7 @@ GT.Project.Setup.CreateSiteSettingsCustomActions = function () {
         } else {
             deferred.resolve();
         }
-    }), Function.createDelegate(this, function() {
+    }), Function.createDelegate(this, function () {
         console.log('Error ' + errorThrown);
         deferred.resolve();
     }));
@@ -150,7 +150,7 @@ GT.Project.Setup.ConfigureQuickLaunch = function () {
                             var linkNode = data[i];
                             var nodeTitle = GT.Common.GetStringValueWithoutTokens(linkNode.Title);
                             var linkUrl = GT.Common.GetStringValueWithoutTokens(linkNode.Url);
-							var isExternal = linkNode.IsExternal == true;
+                            var isExternal = linkNode.IsExternal == true;
                             var existingNode = null;
 
                             for (var k = 0; k < temporaryQuickLaunch.length; k++) {
@@ -162,10 +162,10 @@ GT.Project.Setup.ConfigureQuickLaunch = function () {
                             var newNode = new SP.NavigationNodeCreationInformation();
                             newNode.set_title(nodeTitle);
                             if (existingNode === null || existingNode === undefined) {
-								newNode.set_isExternal(isExternal);
+                                newNode.set_isExternal(isExternal);
                                 newNode.set_url(linkUrl);
                             } else {
-								newNode.set_isExternal(existingNode.get_isExternal());
+                                newNode.set_isExternal(existingNode.get_isExternal());
                                 newNode.set_url(existingNode.get_url());
                             }
                             newNode.set_asLastNode(true);
@@ -485,8 +485,8 @@ GT.Project.Setup.populateTaskList = function (listData) {
 
             for (var i = 0; i < row.Fields.length; i++) {
                 var name = row.Fields[i].Name;
-				var value = GT.Common.GetStringValueWithoutTokens(row.Fields[i].Value);
-				if (name === "Title" && value.length > 255) value = value.substr(0, 252) + "...";
+                var value = GT.Common.GetStringValueWithoutTokens(row.Fields[i].Value);
+                if (name === "Title" && value.length > 255) value = value.substr(0, 252) + "...";
                 listItem.set_item(name, value);
             }
 
@@ -671,7 +671,7 @@ GT.Project.Setup.CopyListItems = function (properties) {
 	                    srcItem.NewListItem = newItem;
 	                    newItem.update();
 	                    clientContext.load(newItem);
-	                } catch(exception) {
+	                } catch (exception) {
 	                    console.log("Error while creating data item " + srcItem.Title + " - not aborting...")
 	                    console.log(exception);
 	                }
@@ -755,7 +755,8 @@ GT.Project.Setup.CreateWebContentTypes = function () {
         GT.Project.Setup.ContentTypes.CreateContentType("Kommunikasjonselement", "GtProjectCommunicationElement", "", "0x010088578e7470cc4aa68d5663464831070203"),
         GT.Project.Setup.ContentTypes.CreateContentType("Prosjektoppgave", "GtProjectTask", "", "0x010800233b015f95174c9a8eb505493841de8d"),
         GT.Project.Setup.ContentTypes.CreateContentType("Prosjektprodukt", "GtProjectProduct", "", "0x010088578e7470cc4aa68d5663464831070205"),
-        GT.Project.Setup.ContentTypes.CreateContentType("Prosjektloggelement", "GtProjectLog", "", "0x010088578e7470cc4aa68d5663464831070206")
+        GT.Project.Setup.ContentTypes.CreateContentType("Prosjektloggelement", "GtProjectLog", "", "0x010088578e7470cc4aa68d5663464831070206"),
+        GT.Project.Setup.ContentTypes.CreateContentType("Arbeidspakke", "GtWorkPackage", "", "0x010088578e7470cc4aa68d5663464831070266")
     ).then(function () {
         GT.jQuery.when(
             GT.Project.Setup.ContentTypes.UpdateListContentTypes("Kommunikasjonsplan", ["Kommunikasjonselement"]),
@@ -767,7 +768,9 @@ GT.Project.Setup.CreateWebContentTypes = function () {
             GT.Project.Setup.ContentTypes.UpdateListContentTypes("Oppgaver", ["Prosjektoppgave"]),
             GT.Project.Setup.ContentTypes.UpdateListContentTypes("Møtekalender", ["Prosjekthendelse"]),
             GT.Project.Setup.ContentTypes.UpdateListContentTypes("Fasesjekkliste", ["Sjekkpunkt"]),
-            GT.Project.Setup.ContentTypes.UpdateListContentTypes("Dokumenter", ["Prosjektdokument"])
+            GT.Project.Setup.ContentTypes.UpdateListContentTypes("Dokumenter", ["Prosjektdokument"]),
+            GT.Project.Setup.ContentTypes.UpdateListContentTypes("Arbeidspakker", ["Arbeidspakke"])
+
         ).then(function () {
             GT.jQuery.when(
                 GT.Project.Setup.ContentTypes.AddFieldToListFromXml('Møtekalender', 'GtProjectEventDateAndTitle', '<Field ID="{7604dadc-d8e3-4f35-bc58-890d33d908b9}" Name="GtProjectEventDateAndTitle" DisplayName="Dato og tittel" Type="Calculated" Hidden="False" Group="Glittertind Områdekolonner" Description="" Required="FALSE" ResultType="Text" ReadOnly="TRUE" EnforceUniqueValues="FALSE" Indexed="FALSE" Percentage="FALSE"><Formula>=TEXT(Starttidspunkt,"yyyy-mm-dd")&amp;" "&amp;Tittel</Formula><FieldRefs><FieldRef Name="Tittel" /><FieldRef Name="Starttidspunkt" /></FieldRefs></Field>')
@@ -778,15 +781,20 @@ GT.Project.Setup.CreateWebContentTypes = function () {
                     GT.Project.Setup.ContentTypes.CreateLookupSiteColumn("Påvirker produkt", "GtProjectLogProductLookup", "Prosjektprodukter", "Title", "{022cc93f-13df-4420-bd47-55e4fdae5d18}", false, true, "Velg hvilke(t) prosjektprodukt som blir påvirket av dette."),
                     GT.Project.Setup.ContentTypes.CreateLookupSiteColumn("Til prosjektstyre", "GtProjectLogEventLookup", "Møtekalender", "GtProjectEventDateAndTitle", "{20731fb1-e98e-4fdc-b3d6-941b41b8fd6e}", false, false, "Dersom dette skal opp i prosjektstyret velger du dato for styringsgruppemøtet her."),
                     GT.Project.Setup.ContentTypes.CreateLookupSiteColumn("Relevant usikkerhet", "GtProjectTaskRisk", "Usikkerhet", "Title", "{920b385c-756f-49eb-98e7-4c3ebf15b7f4}", false, false, ""),
-                    GT.Project.Setup.ContentTypes.CreateLookupSiteColumn("Relevant kommunikasjonselement", "GtProjectTaskComElement", "Kommunikasjonsplan", "Title", "{087dae25-b007-4e58-91b4-347dde464840}", false, false, "")
+                    GT.Project.Setup.ContentTypes.CreateLookupSiteColumn("Relevant kommunikasjonselement", "GtProjectTaskComElement", "Kommunikasjonsplan", "Title", "{087dae25-b007-4e58-91b4-347dde464840}", false, false, ""),
+                    GT.Project.Setup.ContentTypes.CreateLookupSiteColumn("Arbeidspakke", "GtArbeidspakke", "Arbeidspakker", "Title", "{1d097abf-b3ca-4255-a034-08a5e0671dcd}", false, false, ""),
+                    GT.Project.Setup.ContentTypes.CreateLookupSiteColumn("Overordnet arbeidspakke", "GtOverOrdnetArbeidspakke", "Arbeidspakker", "Title", "{08bb2e7a-8924-4c34-aea1-2280d5ce5feb}", false, false, "")
+
                 ).then(function () {
                     GT.jQuery.when(
                         GT.Project.Setup.ContentTypes.LinkFieldsToContentType("Kommunikasjonselement", ["GtCommunicationTarget"]),
-                        GT.Project.Setup.ContentTypes.LinkFieldsToContentType("Prosjektprodukt", ["GtProductInteressent"])
+                        GT.Project.Setup.ContentTypes.LinkFieldsToContentType("Prosjektprodukt", ["GtProductInteressent"]),
+                        GT.Project.Setup.ContentTypes.LinkFieldsToContentType("Prosjektoppgave", ["GtArbeidspakke"])
                     ).then(function () {
                         GT.jQuery.when(
                             GT.Project.Setup.ContentTypes.LinkFieldsToContentType("Prosjektoppgave", ["GtProjectTaskRisk"]),
-                            GT.Project.Setup.ContentTypes.LinkFieldsToContentType("Prosjektloggelement", ["GtProjectLogEventLookup"])
+                            GT.Project.Setup.ContentTypes.LinkFieldsToContentType("Prosjektloggelement", ["GtProjectLogEventLookup"]),
+                            GT.Project.Setup.ContentTypes.LinkFieldsToContentType("Arbeidspakke", ["GtOverOrdnetArbeidspakke"])
                         ).then(function () {
                             GT.jQuery.when(
                                 GT.Project.Setup.ContentTypes.LinkFieldsToContentType("Prosjektoppgave", ["GtProjectTaskComElement"]),
@@ -897,9 +905,9 @@ GT.Project.Setup.UpdateListViews = function (data) {
             var viewType = listViewsToConfigure[i].ViewType;
             var viewFieldsData = listViewsToConfigure[i].ViewFields;
             var viewUrl = listViewsToConfigure[i].Url;
-			var defaultView = listViewsToConfigure[i].DefaultView == true;
+            var defaultView = listViewsToConfigure[i].DefaultView == true;
             var paged = listViewsToConfigure[i].Paged === true;
-			var deleteView = listViewsToConfigure[i].Delete === true;
+            var deleteView = listViewsToConfigure[i].Delete === true;
 
             var view = null;
             if (viewName != "") {
@@ -908,10 +916,10 @@ GT.Project.Setup.UpdateListViews = function (data) {
                 view = GT.Project.Setup.GetViewFromCollectionByUrl(viewCollection, viewUrl);
             }
             if (view != null) {
-				if (deleteView) {
-					view.deleteObject();
-					continue;
-				}
+                if (deleteView) {
+                    view.deleteObject();
+                    continue;
+                }
                 if (viewFieldsData != undefined && viewFieldsData.length > 0) {
                     var columns = view.get_viewFields();
                     columns.removeAll();
@@ -926,11 +934,11 @@ GT.Project.Setup.UpdateListViews = function (data) {
                     view.set_viewQuery(query);
                 }
                 view.set_paged(paged);
-				view.set_defaultView(defaultView);
+                view.set_defaultView(defaultView);
                 view.update();
             } else {
 
-				if (deleteView) { continue; }
+                if (deleteView) { continue; }
                 var viewInfo = new SP.ViewCreationInformation();
                 viewInfo.set_title(viewName);
                 viewInfo.set_rowLimit(rowLimit);
@@ -940,7 +948,7 @@ GT.Project.Setup.UpdateListViews = function (data) {
                 if (viewType) {
                     viewInfo.set_viewTypeKind(viewType);
                 }
-				viewInfo.set_setAsDefaultView(defaultView)
+                viewInfo.set_setAsDefaultView(defaultView)
                 viewCollection.add(viewInfo);
             }
         };
@@ -986,7 +994,7 @@ GT.Project.Setup.GetViewFromCollectionByName = function (viewCollection, name) {
 GT.Project.Setup.GetDataSources = function () {
     var deferred = GT.jQuery.Deferred();
     var siteColRelativeUrl = _spPageContextInfo.siteServerRelativeUrl === '/' ? '' : _spPageContextInfo.siteServerRelativeUrl;
-    var urlToSettings =  siteColRelativeUrl + "/SiteAssets/gt/config/core/datasources.txt";
+    var urlToSettings = siteColRelativeUrl + "/SiteAssets/gt/config/core/datasources.txt";
 
     GT.jQuery.getJSON(urlToSettings)
     .then(function (data) {

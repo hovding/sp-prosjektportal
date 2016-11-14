@@ -71,6 +71,9 @@
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
+    <None Include="SPI\Lists\Arbeidspakker\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{d73942c5-f123-43f1-abd1-39b2af27a6ef}</SharePointProjectItemId>
+    </None>
     <None Include="SPI\Lists\Informasjon\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{70f055bf-b1eb-4e0d-9005-cda386078150}</SharePointProjectItemId>
     </None>
@@ -140,12 +143,15 @@
     <Content Include="Features\SiteProjectWebTemplate\SiteProjectWebTemplate.Template.xml">
       <DependentUpon>SiteProjectWebTemplate.feature</DependentUpon>
     </Content>
+    <Content Include="SPI\Lists\Arbeidspakker\Elements.xml" />
     <Content Include="SPI\Lists\Informasjon\Elements.xml" />
     <Content Include="SPI\Lists\Oppgaver\Elements.xml" />
     <Content Include="SPI\Lists\Dokumenter\Elements.xml" />
     <Content Include="SPI\Lists\Prosjektlogg\Elements.xml" />
     <Content Include="SPI\Lists\Prosjektprodukter\Elements.xml" />
-    <Content Include="SPI\Lists\Interessentregister\Elements.xml" />
+    <Content Include="SPI\Lists\Interessentregister\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="SPI\Lists\Kommunikasjonsplan\Elements.xml" />
     <Content Include="SPI\Lists\MeetingCalendar\Elements.xml" />
     <Content Include="SPI\Lists\Fasesjekkliste\Elements.xml" />
@@ -162,6 +168,7 @@
     <Content Include="SPI\Modules\ProjectLogFormWebparts\FormPlaceholder.aspx" />
     <Content Include="SPI\Modules\ProjectLogFormWebparts\Elements.xml" />
     <Content Include="SPI\Modules\SitePages\Elements.xml" />
+    <Content Include="SPI\Modules\SitePages\Arbeidspakker.aspx" />
     <Content Include="SPI\Modules\SitePages\Tilordnet.aspx" />
     <Content Include="SPI\Modules\SitePages\Ufiltrert.aspx" />
     <Content Include="SPI\Modules\SitePages\Forside.aspx" />

@@ -171,5 +171,10 @@
          ]]>
       </View>
     </File>
+    <File Path="SitePages\Arbeidspakker.aspx" Url="Arbeidspakker.aspx" Type="GhostableInLibrary">
+      <Property Name="Title" Value="Arbeidspakker" />
+      <Property Name="ContentType" Value="WebPartPage" />
+      <Property Name="ContentTypeId" Value="0x01010901" />
+    </File>
   </Module>
 </Elements>

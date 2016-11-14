@@ -6,5 +6,6 @@
     <ProjectItemFile Source="Motereferat.aspx" Target="SitePages\" Type="ElementFile" />
     <ProjectItemFile Source="Ufiltrert.aspx" Target="SitePages\" Type="ElementFile" />
     <ProjectItemFile Source="Tilordnet.aspx" Target="SitePages\" Type="ElementFile" />
+    <ProjectItemFile Source="Arbeidspakker.aspx" Target="SitePages\" Type="ElementFile" />
   </Files>
 </ProjectItem>
